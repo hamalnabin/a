@@ -46,15 +46,7 @@ export const loginSchool = async (req, res) => {
   }
 };
 
-// Get all schools
-export const getAllSchools = [verifyToken, async (req, res, next) => {
-  try {
-    const schools = await School.find().select('-password');
-    res.status(200).json(schools);
-  } catch (error) {
-    next(errorHandler(500, 'Error fetching schools'));
-  }
-}];
+
 
 // Get a single school by ID
 export const getSchoolById = [verifyToken, async (req, res, next) => {
@@ -67,35 +59,6 @@ export const getSchoolById = [verifyToken, async (req, res, next) => {
   }
 }];
 
-// Update a school
-export const updateSchool = [verifyToken, async (req, res, next) => {
-  if (req.user.id !== req.params.id) {
-    return next(errorHandler(403, 'You can update only your own account'));
-  }
-  try {
-    const { schoolId, schoolName, email } = req.body;
-    const school = await School.findByIdAndUpdate(
-      req.params.id,
-      { schoolId, schoolName, email },
-      { new: true, runValidators: true }
-    ).select('-password');
-    if (!school) return next(errorHandler(404, 'School not found'));
-    res.status(200).json(school);
-  } catch (error) {
-    next(errorHandler(500, 'Error updating school'));
-  }
-}];
 
-// Delete a school
-export const deleteSchool = [verifyToken, async (req, res, next) => {
-  if (req.user.id !== req.params.id) {
-    return next(errorHandler(403, 'You can delete only your own account'));
-  }
-  try {
-    const school = await School.findByIdAndDelete(req.params.id);
-    if (!school) return next(errorHandler(404, 'School not found'));
-    res.status(200).json({ message: 'School deleted successfully' });
-  } catch (error) {
-    next(errorHandler(500, 'Error deleting school'));
-  }
-}];
+
+

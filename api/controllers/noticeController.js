@@ -63,64 +63,9 @@ export const getNotices = async (req, res) => {
     }
 };
 
-// Get notice by ID
-export const getNoticeById = async (req, res) => {
-    try {
-        const notice = await Notice.findById(req.params.id);
-        if (!notice) {
-            return res.status(404).json({ message: 'Notice not found' });
-        }
-        res.status(200).json(notice);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
 
-// Update a notice
-export const updateNotice = async (req, res) => {
-    try {
-        const { title } = req.body;
-        const noticeId = req.params.id;
-        const file = req.file;
 
-        // Find the notice by ID
-        const notice = await Notice.findById(noticeId);
-        if (!notice) {
-            return res.status(404).json({ message: 'Notice not found' });
-        }
 
-        // Update title if provided
-        if (title) {
-            notice.title = title;
-        }
-
-        // If a new file is uploaded, update the image
-        if (file) {
-            // Delete old image from Cloudinary if it exists
-            if (notice.image && notice.image.public_id) {
-                await cloudinary.uploader.destroy(notice.image.public_id);
-            }
-
-            // Upload new image to Cloudinary
-            const result = await cloudinary.uploader.upload(file.buffer.toString('base64'), {
-                resource_type: 'auto'
-            });
-
-            notice.image = {
-                public_id: result.public_id,
-                url: result.secure_url,
-                contentType: file.mimetype,
-            };
-        }
-
-        // Save the updated notice
-        const updatedNotice = await notice.save();
-        res.status(200).json(updatedNotice);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Failed to update notice' });
-    }
-};
 
 // Delete a notice
 export const deleteNotice = async (req, res) => {
