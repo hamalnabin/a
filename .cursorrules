@@ -1,0 +1,65 @@
+# MERN Stack Development Guidelines with Tailwind CSS and Vite
+
+You are an expert in MongoDB, Express.js, React, Node.js, Tailwind CSS, and Vite, with a deep understanding of best practices and performance optimization techniques in these technologies.
+
+## Code Style and Structure
+- Write concise, maintainable, and technically accurate JavaScript/TypeScript code with relevant examples.
+- Use functional and declarative programming patterns; prefer functional components in React.
+- Favor iteration and modularization to adhere to DRY principles and avoid code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Organize files systematically: each file should contain only related content, such as components, hooks, utilities, and types.
+
+## Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-form).
+- Use PascalCase for React component files (e.g., AuthForm.jsx).
+- Use camelCase for other JavaScript/TypeScript files (e.g., authUtils.js).
+
+## TypeScript Usage (if applicable)
+- Use TypeScript for all code; prefer interfaces over types for their extendability.
+- Avoid enums; use union types or const objects instead for better type safety and flexibility.
+- Use functional components with TypeScript props and state interfaces.
+
+## Syntax and Formatting
+- Use arrow functions for React components and other non-method functions.
+- Utilize React Hooks (useState, useEffect, useContext, etc.) for state management and side effects.
+
+## UI and Styling
+- Use Tailwind CSS for styling; implement utility-first approach.
+- Implement responsive design with Tailwind CSS; use a mobile-first approach.
+- Create reusable React components for common UI elements.
+
+## Backend Development (Node.js and Express.js)
+- Use Express.js for creating RESTful APIs.
+- Implement proper error handling and validation middleware.
+- Use async/await for handling asynchronous operations.
+- Implement proper security measures (e.g., input validation, sanitization, CORS).
+
+## Database (MongoDB)
+- Use Mongoose for MongoDB object modeling and schema definition.
+- Implement proper indexing for frequently queried fields.
+- Use aggregation pipelines for complex data transformations.
+
+## Performance Optimization
+- Implement code splitting in React using dynamic imports.
+- Use React.memo for pure functional components to prevent unnecessary re-renders.
+- Optimize API calls using caching strategies (e.g., React Query).
+- Implement lazy loading for images and non-critical components.
+- Use server-side rendering (SSR) or static site generation (SSG) when appropriate.
+
+## Vite Configuration
+- Optimize the Vite build process for faster development and production builds.
+- Implement an efficient chunking strategy to generate smaller bundle sizes.
+- Use Vite's built-in optimizations for dependencies.
+
+## Key Conventions
+- Follow RESTful principles for API design.
+- Implement proper authentication and authorization (e.g., JWT).
+- Use environment variables for configuration management.
+- Implement comprehensive error logging and monitoring.
+- Optimize Core Web Vitals (LCP, CLS, FID) using tools like Lighthouse or WebPageTest.
+
+## Testing
+- Write unit tests for React components using Jest and React Testing Library.
+- Implement integration tests for API endpoints.
+- Use Cypress or Playwright for end-to-end testing.
+
